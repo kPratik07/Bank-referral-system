@@ -116,11 +116,12 @@ app.post("/addAccount", async (req, res) => {
 });
 
 // Start HTTP server after ensuring schema
-ensureSchema().finally(() => {
-  app.listen(5000, () => {
-    console.log("Server running on port 5000");
-  });
+// ensureSchema().finally(() => {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
+// });
 
 // Read all accounts (used by the React table)
 app.get("/accounts", async (_req, res) => {
