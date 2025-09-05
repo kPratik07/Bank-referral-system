@@ -1,11 +1,12 @@
 .app-container {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin-top: 20px;
+  margin: 20px;
+  padding: 0 10px;
 }
 
 .page-title {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 800;
   margin-bottom: 20px;
 }
@@ -15,36 +16,45 @@
   gap: 24px;
   justify-content: center;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 .card {
   background: #ffffff;
   border: 1px solid #dcdcdc;
   border-radius: 12px;
-  padding: 24px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .form-card {
-  width: 420px;
+  width: 100%;
+  max-width: 420px;
   text-align: left;
 }
+
 .table-card {
-  width: 520px;
+  width: 100%;
+  max-width: 520px;
   text-align: left;
   background-color: #f6fbff;
   border-color: #cfe2ff;
 }
+
 .card-title {
   margin: 0 0 12px;
-  font-size: 22px;
+  font-size: 20px;
 }
+
 .alert {
   margin-bottom: 10px;
   color: #b42318;
   background: #fee4e2;
   padding: 8px 12px;
   border-radius: 6px;
+  font-size: 14px;
 }
+
 .result-inline {
   display: flex;
   gap: 16px;
@@ -52,45 +62,64 @@
   flex-wrap: wrap;
 }
 
-/* keep legacy .form-box declarations for compatibility */
+/* Form styling */
 .form-box label {
   display: block;
   margin: 10px 0 5px;
   font-weight: bold;
+  font-size: 14px;
 }
+
 .form-box input {
-  padding: 8px;
+  padding: 10px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
 }
+
 .form-box button {
   margin-top: 15px;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background-color: #0d6efd;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: background-color 0.2s;
 }
+
 .form-box button:hover {
   background-color: #0b5ed7;
 }
 
+.form-box button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Table styling */
 .accounts-table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 14px;
 }
+
 .accounts-table th,
 .accounts-table td {
   border: 1px solid #ccc;
-  padding: 10px;
-}
-.accounts-table thead th {
-  background: #e9f2ff;
+  padding: 8px;
+  text-align: left;
 }
 
-/* keep existing result-box for any legacy blocks */
+.accounts-table thead th {
+  background: #e9f2ff;
+  font-weight: bold;
+}
+
 .result-box {
   margin-top: 16px;
   padding: 15px;
@@ -98,4 +127,110 @@
   border: 1px solid #0077cc;
   border-radius: 10px;
   background-color: #eef6ff;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .app-container {
+    margin: 10px;
+    padding: 0 5px;
+  }
+
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .layout {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .card {
+    padding: 16px;
+    width: 100%;
+    max-width: none;
+  }
+
+  .form-card,
+  .table-card {
+    max-width: none;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .accounts-table {
+    font-size: 12px;
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    margin: 5px;
+    padding: 0;
+  }
+
+  .page-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .form-box input {
+    padding: 8px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .form-box button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .accounts-table {
+    font-size: 11px;
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    padding: 4px;
+  }
+
+  /* Make table horizontally scrollable on very small screens */
+  .table-card {
+    overflow-x: auto;
+  }
+
+  .accounts-table {
+    min-width: 280px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .layout {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .form-card {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .table-card {
+    flex: 1;
+    min-width: 300px;
+  }
 }
