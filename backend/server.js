@@ -9,7 +9,7 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "http://localhost:5173",
-    "https://bank-referral-system.vercel.app", // Your actual frontend URL
+    "https://bank-referral-system-zifr.vercel.app", // Your actual frontend URL
     process.env.FRONTEND_URL,
   ].filter(Boolean),
   credentials: true,
